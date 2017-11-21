@@ -1,4 +1,8 @@
 ---
+from:
+  - helm/blocks
+  - helm/jobs
+
 params:
   actions:
     GCloud:
