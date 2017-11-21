@@ -1,5 +1,6 @@
 ---
 from:
+  - root
   - helm/blocks
   - helm/jobs
 
