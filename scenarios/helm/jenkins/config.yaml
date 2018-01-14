@@ -1,6 +1,5 @@
 ---
 from:
-  - helm
   - helm/jenkins/blocks
   - helm/jenkins/jobs
 
