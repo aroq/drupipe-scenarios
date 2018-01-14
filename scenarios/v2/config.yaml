@@ -1,0 +1,10 @@
+pipeline_script: .pipeline
+
+environments:
+  local:
+    server: local
+  test:
+    git_reference: staging
+
+tags:
+  - drupipe
