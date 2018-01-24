@@ -3,10 +3,19 @@ params:
   containers:
     common:
       params:
-        image: michaeltigr/zebra-build-php-drush-docman:0.0.87
+        image: michaeltigr/zebra-build-php-drush-docman:0.0.91
       build:
         params:
-          image: michaeltigr/zebra-build-php-drush-docman:0.0.87
+          image: michaeltigr/zebra-build-php-drush-docman:0.0.91
+        none:
+          params:
+           execute: false
+        release:
+          params:
+            name: build-release
+            blocks:
+            - actions:
+              - from: .params.actions.Docman.${context.environment}.releaseBuild
         deliverables:
           params:
             name: build-deliverables
@@ -22,6 +31,9 @@ params:
       deploy:
         params:
           image: michaeltigr/zebra-deploy-ansible:2.3.2.0
+        none:
+          params:
+            execute: false
         commands:
           params:
             name: deploy-commands
@@ -34,9 +46,18 @@ params:
             blocks:
             - actions:
               - from: .params.actions.Ansible.${context.environment}.deploy
+        ansible_git:
+          params:
+            name: deploy-ansible-git
+            blocks:
+            - actions:
+              - from: .params.actions.Ansible.${context.environment}.deployWithAnsistranoGit
       operations:
         params:
           image: michaeltigr/zebra-operations-druflow:0.1.4
+        none:
+          params:
+            execute: false
         druflow:
           params:
             name: operations-druflow
@@ -57,7 +78,10 @@ params:
               - from: .params.actions.YamlFileHandler.${context.environment}.operations
       artifact:
         params:
-          image: michaeltigr/zebra-build-php-drush-docman:0.0.87
+          image: michaeltigr/zebra-build-php-drush-docman:0.0.91
+        none:
+          params:
+            execute: false
         git:
           params:
             name: artifact
@@ -67,3 +91,7 @@ params:
                 artifactHandler:
                   handler: GitArtifact
                   method: retrieve
+      test:
+        none:
+          params:
+            execute: false
