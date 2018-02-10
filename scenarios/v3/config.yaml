@@ -1,5 +1,11 @@
 config_version: 3
 
+entities:
+  job:
+    retrieve_handler: DeepCollectChildren
+    children_key: jobs
+    context_name: job
+
 log_level: INFO
 
 log_levels:
