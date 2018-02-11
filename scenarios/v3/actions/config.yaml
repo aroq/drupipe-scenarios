@@ -259,7 +259,6 @@ params:
 
     Helm:
       params:
-        log_level: TRACE
         executable: helm
         chart_name: ''
         chart_prefix: ''
