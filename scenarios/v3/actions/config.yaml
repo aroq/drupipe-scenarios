@@ -259,6 +259,7 @@ params:
 
     Helm:
       params:
+        debugEnabled: true
         executable: helm
         chart_name: ''
         chart_prefix: ''
