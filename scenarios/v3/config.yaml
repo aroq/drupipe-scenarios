@@ -8,7 +8,7 @@ entities:
     processors:
       - from_processor
 
-log_level: TRACE
+log_level: INFO
 
 log_levels:
   TRACE:
