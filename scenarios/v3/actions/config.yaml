@@ -477,6 +477,9 @@ params:
           jsonpath: '''{.spec.clusterIP}:{.spec.ports[?(@.name=="http")].port}'''
           return_stdout: true
           service_name: ${action.params.release_name}-${action.params.template_name}
+          hooks: ['process']
+          params_processing:
+            full_command: ['process']
           result_post_process:
             jenkins_address:
               type: result
