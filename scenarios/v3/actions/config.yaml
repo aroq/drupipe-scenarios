@@ -344,6 +344,7 @@ params:
             - ${action.params.release_name}
 
     Kubectl:
+      log_level: TRACE
       params:
         executable: kubectl
         kubectl_config_file: .kubeconfig
