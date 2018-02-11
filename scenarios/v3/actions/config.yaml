@@ -344,7 +344,6 @@ params:
             - ${action.params.release_name}
 
     Kubectl:
-      log_level: TRACE
       params:
         executable: kubectl
         kubectl_config_file: .kubeconfig
@@ -471,6 +470,7 @@ params:
 
       get_address_cluster_ip:
         params:
+          log_level: TRACE
           command: get service
           release_name: ${actions.Helm_status.release_name}
           jsonpath: '''{.spec.clusterIP}:{.spec.ports[?(@.name=="http")].port}'''
