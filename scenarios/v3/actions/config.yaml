@@ -472,7 +472,7 @@ params:
         params:
           log_level: TRACE
           command: get service
-          release_name: ${actions.Helm_status.release_name}
+          release_name: ${context.k8s.release_name}
           jsonpath: '''{.spec.clusterIP}:{.spec.ports[?(@.name=="http")].port}'''
           return_stdout: true
           service_name: ${action.params.release_name}-${action.params.template_name}
