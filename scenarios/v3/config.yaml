@@ -5,6 +5,8 @@ entities:
     retrieve_handler: DeepCollectChildren
     children_key: jobs
     context_name: job
+    processors:
+      - from_processor
 
 log_level: INFO
 
