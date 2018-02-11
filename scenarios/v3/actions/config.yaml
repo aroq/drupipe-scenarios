@@ -324,6 +324,7 @@ params:
 
       status:
         params:
+          log_level: TRACE
           command: status
           flags: {}
           full_command:
@@ -376,10 +377,10 @@ params:
       get_replicaset_name:
         params:
           command: get replicaset
-          release_name: ${actions.Helm_status.release_name}
+          release_name: ${context.k8s.release_name}
           jsonpath: '{.items[0].metadata.name}'
           return_stdout: true
-          selector: component=${context.k8s.release_name}-${action.params.template_name}
+          selector: component=${action.params.release_name}-${action.params.template_name}
           flags:
             --namespace:
               - ${action.params.namespace}
@@ -395,11 +396,11 @@ params:
       get_pod_name:
         params:
           command: get pod
-          release_name: ${actions.Helm_status.release_name}
+          release_name: ${context.k8s.release_name}
           jsonpath: '{.items[0].metadata.name}'
           return_stdout: true
           # TODO: Redo it.
-          selector: component=${context.k8s.release_name}-${action.params.template_name}
+          selector: component=${action.params.release_name}-${action.params.template_name}
           flags:
             --namespace:
               - ${action.params.namespace}
@@ -426,10 +427,10 @@ params:
       get_address_lb:
         params:
           command: get service
-          release_name: ${actions.Helm_status.release_name}
+          release_name: ${context.k8s.release_name}
           jsonpath: '''{.items[0].status.loadBalancer.ingress[0].ip}:{.items[0].spec.ports[?(@.name=="http")].port}'''
           return_stdout: true
-          selector: component=${context.k8s.release_name}-${action.params.template_name}
+          selector: component=${action.params.release_name}-${action.params.template_name}
           result_post_process:
             jenkins_address:
               type: result
@@ -450,7 +451,7 @@ params:
       get_address_ingress:
         params:
           command: get ingress
-          release_name: ${actions.Helm_status.release_name}
+          release_name: ${context.k8s.release_name}
           jsonpath: '''{.items[0].spec.rules[0].host}'''
           return_stdout: true
           result_post_process:
