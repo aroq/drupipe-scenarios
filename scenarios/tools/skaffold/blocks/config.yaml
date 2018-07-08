@@ -39,21 +39,3 @@ params:
         params:
           actions:
           - from: .params.actions.skaffold.delete
-
-    gitlab:
-      accept-mr:
-        params:
-          actions:
-          - from: .params.actions.Gitlab.acceptMR
-            message: All tests passed.
-
-    bump-stable:
-      params:
-        actions:
-        - from: .params.actions.Docman.bumpStable
-
-    get-stable-version:
-      params:
-        actions:
-        - from: .params.actions.Docman.getStable
-          dir: stable_version

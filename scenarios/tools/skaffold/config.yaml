@@ -32,11 +32,6 @@ params:
                 destroy:
                   from: .params.jobs.common.skaffold.destroy
     common:
-      bump_stable:
-        params:
-          pipeline:
-            from: .params.pipelines.bump_stable
-
       skaffold:
         install:
           params:
@@ -53,63 +48,9 @@ params:
             pipeline:
               from: .params.pipelines.skaffold.destroy
 
-    gitlab:
-      params:
-        name: 'jobs.gitlab'
-      mr:
-        params:
-          branch: "${GIT_COMMIT}"
-
-      webhooks:
-        push:
-          params:
-            webhooks:
-              - push_events: true
-        mr:
-          params:
-            webhooks:
-              - push_events: false
-                merge_requests_events: true
-
-      triggers:
-        push:
-          params:
-            triggers:
-              gitlabPush:
-                buildOnPushEvents: true
-                buildOnMergeRequestEvents: false
-                enableCiSkip: true
-          develop:
-            params:
-              triggers:
-                gitlabPush:
-                  includeBranches: ['develop']
-          master:
-            params:
-              triggers:
-                gitlabPush:
-                  includeBranches: ['master']
-        mr:
-          params:
-            triggers:
-              gitlabPush:
-                buildOnPushEvents: false
-                rebuildOpenMergeRequest: 'source'
-                includeBranches: ['master']
-                enableCiSkip: true
-
   pipelines:
     params:
       name: default
-
-    bump_stable:
-      params:
-        pods:
-        - from: .params.pods.default
-          containers:
-          - from: .params.containers.common
-            blocks:
-            - from: .params.blocks.bump-stable
 
     skaffold:
       status:
@@ -118,7 +59,7 @@ params:
           - from: .params.pods.skaffold
             containers:
             - from: .params.containers.skaffold.status
-            - from: .params.containers.kubectl.status
+            # - from: .params.containers.kubectl.status
 
       install:
         params:
@@ -127,7 +68,7 @@ params:
             containers:
             - from: .params.containers.skaffold
               blocks:
-              - from: .params.blocks.skaffold.${context.container_types.kubectl.apply.type}.apply
+              # - from: .params.blocks.skaffold.${context.container_types.kubectl.apply.type}.apply
               - from: .params.blocks.skaffold.status
 
       destroy:
