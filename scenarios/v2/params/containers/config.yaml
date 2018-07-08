@@ -3,10 +3,10 @@ params:
   containers:
     common:
       params:
-        image: michaeltigr/zebra-build-php-drush-docman:0.0.91
+        image: michaeltigr/zebra-build-php-drush-docman:0.0.98
       build:
         params:
-          image: michaeltigr/zebra-build-php-drush-docman:0.0.91
+          image: michaeltigr/zebra-build-php-drush-docman:0.0.98
         none:
           params:
            execute: false
@@ -30,7 +30,7 @@ params:
               - from: .params.actions.YamlFileHandler.build
       deploy:
         params:
-          image: michaeltigr/zebra-deploy-ansible:2.3.2.0
+          image: michaeltigr/zebra-deploy-ansible:2.3.2.0.1
         none:
           params:
             execute: false
@@ -52,6 +52,18 @@ params:
             blocks:
             - actions:
               - from: .params.actions.Ansible.${context.environment}.deployWithAnsistranoGit
+        ansible_copy:
+          params:
+            name: deploy-ansible-copy
+            blocks:
+            - actions:
+              - from: .params.actions.Ansible.${context.environment}.deployWithAnsistranoCopy
+        platformsh:
+          params:
+            name: deploy-platformsh
+            blocks:
+            - actions:
+              - from: .params.actions.Platformsh.${context.environment}.execute
       operations:
         params:
           image: michaeltigr/zebra-operations-druflow:0.1.4
@@ -69,7 +81,7 @@ params:
             name: operations-commands
             blocks:
             - actions:
-              - from: .params.actions.Commands.operations.${context.environment}.execute
+              - from: .params.actions.Commands.operations.${context.environment}.${context.env.operationsMode}.execute
         yaml:
           params:
             name: operations-yaml
@@ -78,7 +90,7 @@ params:
               - from: .params.actions.YamlFileHandler.${context.environment}.operations
       artifact:
         params:
-          image: michaeltigr/zebra-build-php-drush-docman:0.0.91
+          image: michaeltigr/zebra-build-php-drush-docman:0.0.98
         none:
           params:
             execute: false
@@ -95,3 +107,65 @@ params:
         none:
           params:
             execute: false
+        taurus:
+          params:
+            name: taurus
+            image: michaeltigr/zebra-jmeter-taurus:1.12.0-travis
+            blocks:
+            - actions:
+              - from: .params.actions.TaurusTester.${context.environment}.tets
+        vegeta:
+          params:
+            name: vegeta
+            image: michaeltigr/zebra-vegeta:6.3.0
+            blocks:
+            - actions:
+              - from: .params.actions.VegetaTester.${context.environmt}.preprare
+                from: .params.actions.VegetaTester.${context.environmt}.test
+      bump:
+        stable:
+          params:
+            name: bump_stable
+            image: michaeltigr/zebra-build-php-drush-docman:0.0.98
+            blocks:
+            - actions:
+              - from: .params.actions.Docman.bumpStable
+      drush:
+        params:
+          image: michaeltigr/zebra-build-php-drush-docman:0.0.98
+        drush:
+          params:
+            name: drush
+            blocks:
+            - actions:
+              - from: .params.actions.Drush.${context.environment}.runCommand
+        drush_features_list:
+          params:
+            name: drush_features_list
+            blocks:
+            - actions:
+              - from: .params.actions.DrushFeaturesList.${context.environment}.runCommand
+      opcache_reset:
+        params:
+          name: opcache_reset
+          blocks:
+          - actions:
+            - from: .params.actions.Commands.opcache_reset.${context.environment}.execute
+      redis:
+        params:
+          name: redis
+          blocks:
+          - actions:
+            - from: .params.actions.Commands.redis.${context.environment}.execute
+      backmerge:
+        params:
+          name: backmerge
+          blocks:
+          - actions:
+            - from: .params.actions.Commands.backmerge.${context.environment}.execute
+      sync:
+        files:
+          aws:
+            params:
+              name: sync_files_aws
+              image: michaeltigr/zebra-aws-cli:latest

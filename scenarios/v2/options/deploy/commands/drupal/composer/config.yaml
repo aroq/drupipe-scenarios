@@ -1,0 +1,11 @@
+from:
+  - v2/options/deploy/commands/drupal
+
+params:
+  actions:
+    Commands:
+      deploy:
+        post_blocks:
+          params:
+            actions:
+              - 'composer install --prefer-dist --optimize-autoloader'

@@ -1,0 +1,14 @@
+from:
+  - v2/options/deploy/commands/drupal/composer
+
+params:
+  actions:
+    Commands:
+      deploy:
+        dev:
+          params:
+            actions:
+              - 'echo "Add shared files."'
+              - 'ln -sfn ${context.environments[context.environment].root}/shared/${context.project_subdirectory}/docroot/sites/default/files ${context.environments[context.environment].root}/current/${context.project_subdirectory}/docroot/sites/default/files'
+              - 'echo "Set environment."'
+              - 'ln -sfn ${context.environments[context.environment].root}/shared/${context.project_subdirectory}/environments/env.settings.php ${context.environments[context.environment].root}/current/${context.project_subdirectory}/environments/env.settings.php'

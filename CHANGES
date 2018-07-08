@@ -1,3 +1,126 @@
+Version 0.3.6:
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #43 from michael-molchanov/patch-2
+ - Merge pull request #44 from michael-molchanov/master
+ - Add staging direct git deploy.
+ - Docman 0.0.98
+
+Version 0.3.5:
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #42 from michael-molchanov/master
+ - Add containers, update images tags.
+
+Version 0.3.4:
+ - Merge pull request #41 from michael-molchanov/amaster
+ - Add operationsMode support to commands container.
+
+Version 0.3.3:
+ - Disable helm init
+
+Version 0.3.2:
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #40 from michael-molchanov/amaster
+ - Fix missspell.
+
+Version 0.3.1:
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #39 from michael-molchanov/amaster
+ - Fix bump job.
+ - Docman 0.0.97.
+
+Version 0.3.0:
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #38 from michael-molchanov/amaster
+ - Docman 0.0.96.
+
+Version 0.2.9:
+ - Merge pull request #37 from michael-molchanov/ansistrano_copy
+ - Merge pull request #36 from michael-molchanov/amaster
+ - Add ansible copy container.
+ - Remove cleanup before git pull.
+
+Version 0.2.8:
+ - Merge pull request #35 from michael-molchanov/master
+ - Fix pattern
+ - Fix pattern.
+ - Add platform.sh container.
+
+Version 0.2.7:
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #34 from michael-molchanov/master
+ - Fix pipeline missspelling.
+
+Version 0.2.6:
+ - Merge pull request #33 from michael-molchanov/master
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Keep 5 logs for prod deploy job.
+
+Version 0.2.5:
+ - Merge pull request #32 from michael-molchanov/master
+ - Add git cleanup.
+ - Fix script path.
+ - Add full release jobs.
+
+Version 0.2.4:
+ - Merge pull request #31 from michael-molchanov/master
+ - Remove tags fetch.
+ - Add backmerge.
+ - Merge branch 'master' of github.com:michael-molchanov/drupipe-scenarios
+ - Docman 0.0.92.
+ - Formatting.
+
+Version 0.2.3:
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #30 from michael-molchanov/master
+ - Drupal commands.
+ - Use tools image.
+ - Add composer post block.
+ - Add composer deploy commands.
+ - Add project subdirectory support.
+ - Reorganize jobs.
+ - Fix cycle loading.
+ - Jobs inheritance.
+ - Reorganize structure.
+ - Merge pull request #29 from michael-molchanov/master
+ - Fix formatting.
+
+Version 0.2.2:
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #28 from michael-molchanov/master
+ - Boilerplate
+
+Version 0.2.1:
+ - Merge pull request #27 from michael-molchanov/master
+ - Test containers.
+ - Add drush, redis, opcache.
+ - Merge branch 'master' of github.com:michael-molchanov/drupipe-scenarios
+ - Add migrate state jobs.
+ - Update config.yaml
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Fix check flag.
+ - Add npm install options.
+
+Version 0.2.0:
+ - Merge pull request #26 from michael-molchanov/master
+ - Add states.
+ - Add release build state jobs.
+ - Add bump-stable job to v2 scenarios
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #25 from michael-molchanov/master
+ - Docman 0.0.91
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #24 from michael-molchanov/master
+ - Docman 0.0.90.
+ - Merge pull request #23 from michael-molchanov/patch-1
+ - Fix conditions, on false makes job failure.
+ - Merge pull request #22 from michael-molchanov/master
+ - Add yarn options.
+ - Merge pull request #21 from michael-molchanov/master
+ - Add deploy options.
+ - Merge branch 'master' of github.com:aroq/drupipe-scenarios
+ - Merge pull request #20 from michael-molchanov/master
+ - Do not execute none containers.
+
 Version 0.1.9:
  - Merge pull request #19 from michael-molchanov/master
  - Add params keyword.

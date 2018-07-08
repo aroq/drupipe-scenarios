@@ -9,10 +9,16 @@ params:
         params:
           pods:
           - from: .params.pods.state.development
+
       staging:
         params:
           pods:
           - from: .params.pods.state.staging
+
+      migrate:
+        params:
+          pods:
+          - from: .params.pods.state.migrate
 
       stable:
         params:
@@ -20,10 +26,19 @@ params:
           - from: .params.pods.state.stable
 
     release:
+      full:
+        development:
+          params:
+            pods:
+              - from: .params.pods.release.full.development
+        staging:
+          params:
+            pods:
+              - from: .params.pods.release.full.staging
       build:
         params:
           pods:
-          - from: .params.pods.release.build
+            - from: .params.pods.release.build
 
       deploy:
         dev:
@@ -36,6 +51,11 @@ params:
             pods:
               - from: .params.pods.release.deploy.stage
 
+        migrate:
+          params:
+            pods:
+              - from: .params.pods.release.deploy.migrate
+
         preprod:
           params:
             pods:
@@ -45,3 +65,21 @@ params:
           params:
             pods:
             - from: .params.pods.release.deploy.prod
+    test:
+      taurus:
+        params:
+          pods:
+            - from: .params.pods.test.taurus
+      vegeta:
+        params:
+          pods:
+            - from: .params.pods.test.vegeta
+    backmerge:
+      params:
+        pods:
+          - from: .params.pods.backmerge
+    bump:
+      stable:
+        params:
+          pods:
+            - from: .params.pods.bump.stable

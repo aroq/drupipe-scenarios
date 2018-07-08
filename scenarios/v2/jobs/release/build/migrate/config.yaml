@@ -1,0 +1,8 @@
+from:
+  - v2/params/jobs
+
+jobs:
+  release-build-migrate:
+    from: .params.jobs.release.build.migrate
+    context:
+      environment: migrate

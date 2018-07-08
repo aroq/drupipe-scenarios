@@ -8,8 +8,8 @@ params:
         post_blocks:
           params:
             actions:
-              - 'yarn'
-              - 'yarn build'
+              - 'npm install'
+              - 'npm run build'
   containers:
     common:
       build:
