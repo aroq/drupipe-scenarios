@@ -111,7 +111,7 @@ params:
     skaffold:
       params:
         name: skaffold
-        image: docker pull mattkelly/skaffold
+        image: mattkelly/skaffold
 
       status:
         params:
