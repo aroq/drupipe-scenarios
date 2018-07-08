@@ -1,0 +1,59 @@
+---
+params:
+  blocks:
+    kubectl:
+      status:
+        params:
+          actions:
+          - from: .params.actions.Kubectl.get_pods
+
+      pod-logs:
+        params:
+          actions:
+          - from: .params.actions.Kubectl.get_pod_name
+          - from: .params.actions.Kubectl.get_pod_logs
+            pod_name: "${context.results.action.Kubectl_get_pod_name.stdout}"
+
+    gcloud:
+      auth:
+        params:
+          actions:
+          - from: .params.actions.GCloud.auth
+
+    skaffold:
+      # params:
+        # pre_actions:
+        # - from: .params.actions.skaffold.init
+
+      status:
+        params:
+          actions:
+          - from: .params.actions.skaffold.status
+
+      apply:
+        params:
+          actions:
+          - from: .params.actions.skaffold.${context.container_types.skaffold.apply.type}.apply
+
+      destroy:
+        params:
+          actions:
+          - from: .params.actions.skaffold.delete
+
+    gitlab:
+      accept-mr:
+        params:
+          actions:
+          - from: .params.actions.Gitlab.acceptMR
+            message: All tests passed.
+
+    bump-stable:
+      params:
+        actions:
+        - from: .params.actions.Docman.bumpStable
+
+    get-stable-version:
+      params:
+        actions:
+        - from: .params.actions.Docman.getStable
+          dir: stable_version

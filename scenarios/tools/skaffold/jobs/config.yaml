@@ -1,0 +1,16 @@
+---
+jobs:
+  dev:
+    from:
+      - .params.jobs.folder.dev
+      - .params.jobs.folder.skaffold.general.install
+
+  preprod:
+    from:
+      - .params.jobs.folder.preprod
+      - .params.jobs.folder.skaffold.general.install
+
+  prod:
+    from:
+      - .params.jobs.folder.prod
+      - .params.jobs.folder.skaffold.general.install
