@@ -7,13 +7,6 @@ params:
           actions:
           - from: .params.actions.Kubectl.get_pods
 
-      pod-logs:
-        params:
-          actions:
-          - from: .params.actions.Kubectl.get_pod_name
-          - from: .params.actions.Kubectl.get_pod_logs
-            pod_name: "${context.results.action.Kubectl_get_pod_name.stdout}"
-
     gcloud:
       auth:
         params:
@@ -21,21 +14,17 @@ params:
           - from: .params.actions.GCloud.auth
 
     skaffold:
-      # params:
-        # pre_actions:
-        # - from: .params.actions.skaffold.init
-
       status:
         params:
           actions:
-          - from: .params.actions.skaffold.status
+          - from: .params.actions.Skaffold.status
 
       run:
         params:
           actions:
-          - from: .params.actions.skaffold.run
+          - from: .params.actions.Skaffold.run
 
       destroy:
         params:
           actions:
-          - from: .params.actions.skaffold.delete
+          - from: .params.actions.Skaffold.delete
