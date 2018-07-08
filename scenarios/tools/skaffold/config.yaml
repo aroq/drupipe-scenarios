@@ -111,7 +111,8 @@ params:
       params:
         name: skaffold
         # image: mattkelly/skaffold
-        image: addisonbair/skaffold
+        # image: addisonbair/skaffold
+        image: errordeveloper/skaffold:66cc263ef18f107adce245b8fc622a8ea46385f2
 
       status:
         params:
