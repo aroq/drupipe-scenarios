@@ -30,7 +30,7 @@ params:
           actions:
           - from: .params.actions.skaffold.status
 
-      apply:
+      run:
         params:
           actions:
           - from: .params.actions.skaffold.run
