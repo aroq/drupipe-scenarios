@@ -68,8 +68,7 @@ params:
             containers:
             - from: .params.containers.skaffold
               blocks:
-              # - from: .params.blocks.skaffold.${context.container_types.kubectl.apply.type}.apply
-              - from: .params.blocks.skaffold.status
+              - from: .params.blocks.skaffold.run
 
       destroy:
         params:
