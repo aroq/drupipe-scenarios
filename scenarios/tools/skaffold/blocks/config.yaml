@@ -22,7 +22,7 @@ params:
       run:
         params:
           actions:
-          - from: .params.actions.Helm.run
+          - from: .params.actions.Helm.status
 
       destroy:
         params:
