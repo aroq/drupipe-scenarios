@@ -33,7 +33,7 @@ params:
       apply:
         params:
           actions:
-          - from: .params.actions.skaffold.${context.container_types.skaffold.apply.type}.run
+          - from: .params.actions.skaffold.run
 
       destroy:
         params:
