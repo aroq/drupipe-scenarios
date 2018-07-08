@@ -111,7 +111,7 @@ params:
     skaffold:
       params:
         name: skaffold
-        image: gcr.io/k8s-skaffold/skaffold
+        image: docker pull mattkelly/skaffold
 
       status:
         params:
