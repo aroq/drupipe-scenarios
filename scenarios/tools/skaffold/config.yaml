@@ -110,7 +110,8 @@ params:
     skaffold:
       params:
         name: skaffold
-        image: mattkelly/skaffold
+        # image: mattkelly/skaffold
+        image: errordeveloper/skaffold
 
       status:
         params:
