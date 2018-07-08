@@ -22,7 +22,7 @@ params:
       run:
         params:
           actions:
-          - from: .params.actions.Helm.status
+          - from: .params.actions.Skaffold.run
 
       destroy:
         params:
