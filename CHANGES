@@ -1,3 +1,7 @@
+Version 0.3.9:
+ - Merge pull request #48 from michael-molchanov/patch-4
+ - Update image version.
+
 Version 0.3.8:
  - Merge pull request #46 from michael-molchanov/patch-3
  - Add ssh keep alive to ssh config.
